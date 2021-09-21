@@ -1,0 +1,56 @@
+<query>
+<name>ERX - CPU Usage</name>
+<description>Grab the CPU Usage using SNMP-Informant</description>
+<oid_index>.1.3.6.1.4.1.4874.2.2.2.1.3.5.1.8</oid_index>
+<oid_index_parse>OID/REGEXP:^.{33}(.*)</oid_index_parse>
+<index_order_type>numeric</index_order_type>
+
+<fields>
+   <CpuIndex>
+      <name>CpuIndex</name>
+      <method>walk</method>
+      <source>index</source>
+      <direction>input</direction>
+   </CpuIndex>
+   <CpuDescr>
+      <name>CpuDescr</name>
+      <method>walk</method>
+      <source>value</source>
+      <direction>input</direction>
+      <oid>1.3.6.1.4.1.4874.2.2.2.1.3.4.1.4</oid>
+   </CpuDescr>
+   <!--
+   <CpuDescr>
+      <name>CpuDescr</name>
+      <method>walk</method>
+      <source>value</source>
+      <source>VALUE/REGEXP:Temperature sensor on (.*)</source>
+      <direction>input</direction>
+      <oid>.1.3.6.1.4.1.4874.2.2.2.1.3.5.1.8</oid>Q
+   </CpuDescr>
+   -->
+   <CpuFiveSecUtilPct>
+      <name>CpuFiveSec</name>
+      <method>walk</method>
+      <source>value</source>
+      <direction>output</direction>
+      <oid>.1.3.6.1.4.1.4874.2.2.2.1.3.5.1.9</oid>Q
+   </CpuFiveSecUtilPct>
+   <CpuOneMinAvgPct>
+      <name>CpuOneMin</name>
+      <method>walk</method>
+      <source>value</source>
+      <direction>output</direction>
+      <oid>.1.3.6.1.4.1.4874.2.2.2.1.3.5.1.10</oid>
+   </CpuOneMinAvgPct>
+   <CpuFiveMinAvgPct>
+      <name>CpuFiveMin</name>
+      <method>walk</method>
+      <source>value</source>
+      <direction>output</direction>
+      <oid>.1.3.6.1.4.1.4874.2.2.2.1.3.5.1.11</oid>
+   </CpuFiveMinAvgPct>
+                        
+
+</fields>
+</query>
